@@ -1,26 +1,20 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 const EditForm = ({ product, onEditFormToggle, onEdit }) => {
   const handleToggleEditForm = onEditFormToggle;
 
-  const [title, setTitle] = useState("");
-  const [price, setPrice] = useState(0);
-  const [quantity, setQuantity] = useState(0);
-
-  useEffect(() => {
-    setTitle(product.title);
-    setPrice(product.price);
-    setQuantity(product.quantity);
-  }, [product]);
+  const [title, setTitle] = useState(product.title);
+  const [price, setPrice] = useState(product.price);
+  const [quantity, setQuantity] = useState(product.quantity);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const newProduct = {
+    const updatedProduct = {
       title,
       price,
       quantity,
     };
-    onEdit(product._id, newProduct);
+    onEdit(product._id, updatedProduct);
     handleToggleEditForm();
   };
 

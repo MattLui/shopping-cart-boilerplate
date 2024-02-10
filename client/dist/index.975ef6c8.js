@@ -6258,24 +6258,17 @@ var _s = $RefreshSig$();
 const EditForm = ({ product, onEditFormToggle, onEdit })=>{
     _s();
     const handleToggleEditForm = onEditFormToggle;
-    const [title, setTitle] = (0, _react.useState)("");
-    const [price, setPrice] = (0, _react.useState)(0);
-    const [quantity, setQuantity] = (0, _react.useState)(0);
-    (0, _react.useEffect)(()=>{
-        setTitle(product.title);
-        setPrice(product.price);
-        setQuantity(product.quantity);
-    }, [
-        product
-    ]);
+    const [title, setTitle] = (0, _react.useState)(product.title);
+    const [price, setPrice] = (0, _react.useState)(product.price);
+    const [quantity, setQuantity] = (0, _react.useState)(product.quantity);
     const handleSubmit = (e)=>{
         e.preventDefault();
-        const newProduct = {
+        const updatedProduct = {
             title,
             price,
             quantity
         };
-        onEdit(product._id, newProduct);
+        onEdit(product._id, updatedProduct);
         handleToggleEditForm();
     };
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -6285,7 +6278,7 @@ const EditForm = ({ product, onEditFormToggle, onEdit })=>{
                 children: "Edit Product"
             }, void 0, false, {
                 fileName: "src/components/EditForm.js",
-                lineNumber: 29,
+                lineNumber: 23,
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("form", {
@@ -6299,7 +6292,7 @@ const EditForm = ({ product, onEditFormToggle, onEdit })=>{
                                 children: "Product Name"
                             }, void 0, false, {
                                 fileName: "src/components/EditForm.js",
-                                lineNumber: 32,
+                                lineNumber: 26,
                                 columnNumber: 11
                             }, undefined),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
@@ -6310,13 +6303,13 @@ const EditForm = ({ product, onEditFormToggle, onEdit })=>{
                                 onChange: (e)=>setTitle(e.target.value)
                             }, void 0, false, {
                                 fileName: "src/components/EditForm.js",
-                                lineNumber: 33,
+                                lineNumber: 27,
                                 columnNumber: 11
                             }, undefined)
                         ]
                     }, void 0, true, {
                         fileName: "src/components/EditForm.js",
-                        lineNumber: 31,
+                        lineNumber: 25,
                         columnNumber: 9
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -6327,7 +6320,7 @@ const EditForm = ({ product, onEditFormToggle, onEdit })=>{
                                 children: "Price"
                             }, void 0, false, {
                                 fileName: "src/components/EditForm.js",
-                                lineNumber: 43,
+                                lineNumber: 37,
                                 columnNumber: 11
                             }, undefined),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
@@ -6338,13 +6331,13 @@ const EditForm = ({ product, onEditFormToggle, onEdit })=>{
                                 onChange: (e)=>setPrice(e.target.value)
                             }, void 0, false, {
                                 fileName: "src/components/EditForm.js",
-                                lineNumber: 44,
+                                lineNumber: 38,
                                 columnNumber: 11
                             }, undefined)
                         ]
                     }, void 0, true, {
                         fileName: "src/components/EditForm.js",
-                        lineNumber: 42,
+                        lineNumber: 36,
                         columnNumber: 9
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -6355,7 +6348,7 @@ const EditForm = ({ product, onEditFormToggle, onEdit })=>{
                                 children: "Quantity"
                             }, void 0, false, {
                                 fileName: "src/components/EditForm.js",
-                                lineNumber: 54,
+                                lineNumber: 48,
                                 columnNumber: 11
                             }, undefined),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
@@ -6366,13 +6359,13 @@ const EditForm = ({ product, onEditFormToggle, onEdit })=>{
                                 onChange: (e)=>setQuantity(e.target.value)
                             }, void 0, false, {
                                 fileName: "src/components/EditForm.js",
-                                lineNumber: 55,
+                                lineNumber: 49,
                                 columnNumber: 11
                             }, undefined)
                         ]
                     }, void 0, true, {
                         fileName: "src/components/EditForm.js",
-                        lineNumber: 53,
+                        lineNumber: 47,
                         columnNumber: 9
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -6384,7 +6377,7 @@ const EditForm = ({ product, onEditFormToggle, onEdit })=>{
                                 children: "Update"
                             }, void 0, false, {
                                 fileName: "src/components/EditForm.js",
-                                lineNumber: 65,
+                                lineNumber: 59,
                                 columnNumber: 11
                             }, undefined),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
@@ -6393,29 +6386,29 @@ const EditForm = ({ product, onEditFormToggle, onEdit })=>{
                                 children: "Cancel"
                             }, void 0, false, {
                                 fileName: "src/components/EditForm.js",
-                                lineNumber: 68,
+                                lineNumber: 62,
                                 columnNumber: 11
                             }, undefined)
                         ]
                     }, void 0, true, {
                         fileName: "src/components/EditForm.js",
-                        lineNumber: 64,
+                        lineNumber: 58,
                         columnNumber: 9
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/components/EditForm.js",
-                lineNumber: 30,
+                lineNumber: 24,
                 columnNumber: 7
             }, undefined)
         ]
     }, void 0, true, {
         fileName: "src/components/EditForm.js",
-        lineNumber: 28,
+        lineNumber: 22,
         columnNumber: 5
     }, undefined);
 };
-_s(EditForm, "3kYd1Djxw33rHPhYxEUHNImmbJs=");
+_s(EditForm, "vn6ULhpm0DW0h06XxfFQarkOMo4=");
 _c = EditForm;
 exports.default = EditForm;
 var _c;
@@ -6426,7 +6419,7 @@ $RefreshReg$(_c, "EditForm");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","react":"21dqq"}],"9FxpF":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"9FxpF":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$a902 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -6506,6 +6499,7 @@ const AddForm = ({ onSubmit })=>{
                                 onChange: (e)=>setTitle(e.target.value),
                                 id: "product-name",
                                 name: "product-name",
+                                value: title,
                                 required: true
                             }, void 0, false, {
                                 fileName: "src/components/AddForm.js",
@@ -6526,7 +6520,7 @@ const AddForm = ({ onSubmit })=>{
                                 children: "Price:"
                             }, void 0, false, {
                                 fileName: "src/components/AddForm.js",
-                                lineNumber: 48,
+                                lineNumber: 49,
                                 columnNumber: 11
                             }, undefined),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
@@ -6536,16 +6530,17 @@ const AddForm = ({ onSubmit })=>{
                                 min: "0",
                                 step: "0.01",
                                 onChange: (e)=>setPrice(e.target.value),
+                                value: price,
                                 required: true
                             }, void 0, false, {
                                 fileName: "src/components/AddForm.js",
-                                lineNumber: 49,
+                                lineNumber: 50,
                                 columnNumber: 11
                             }, undefined)
                         ]
                     }, void 0, true, {
                         fileName: "src/components/AddForm.js",
-                        lineNumber: 47,
+                        lineNumber: 48,
                         columnNumber: 9
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -6556,7 +6551,7 @@ const AddForm = ({ onSubmit })=>{
                                 children: "Quantity:"
                             }, void 0, false, {
                                 fileName: "src/components/AddForm.js",
-                                lineNumber: 60,
+                                lineNumber: 62,
                                 columnNumber: 11
                             }, undefined),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
@@ -6565,16 +6560,17 @@ const AddForm = ({ onSubmit })=>{
                                 name: "product-quantity",
                                 min: "0",
                                 onChange: (e)=>setQuantity(e.target.value),
+                                value: quantity,
                                 required: true
                             }, void 0, false, {
                                 fileName: "src/components/AddForm.js",
-                                lineNumber: 61,
+                                lineNumber: 63,
                                 columnNumber: 11
                             }, undefined)
                         ]
                     }, void 0, true, {
                         fileName: "src/components/AddForm.js",
-                        lineNumber: 59,
+                        lineNumber: 61,
                         columnNumber: 9
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -6585,7 +6581,7 @@ const AddForm = ({ onSubmit })=>{
                                 children: "Add"
                             }, void 0, false, {
                                 fileName: "src/components/AddForm.js",
-                                lineNumber: 71,
+                                lineNumber: 74,
                                 columnNumber: 11
                             }, undefined),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
@@ -6594,13 +6590,13 @@ const AddForm = ({ onSubmit })=>{
                                 children: "Cancel"
                             }, void 0, false, {
                                 fileName: "src/components/AddForm.js",
-                                lineNumber: 72,
+                                lineNumber: 75,
                                 columnNumber: 11
                             }, undefined)
                         ]
                     }, void 0, true, {
                         fileName: "src/components/AddForm.js",
-                        lineNumber: 70,
+                        lineNumber: 73,
                         columnNumber: 9
                     }, undefined)
                 ]

@@ -41,6 +41,7 @@ const AddForm = ({ onSubmit }) => {
             onChange={(e) => setTitle(e.target.value)}
             id="product-name"
             name="product-name"
+            value={title}
             required
           />
         </div>
@@ -53,6 +54,7 @@ const AddForm = ({ onSubmit }) => {
             min="0"
             step="0.01"
             onChange={(e) => setPrice(e.target.value)}
+            value={price}
             required
           />
         </div>
@@ -64,6 +66,7 @@ const AddForm = ({ onSubmit }) => {
             name="product-quantity"
             min="0"
             onChange={(e) => setQuantity(e.target.value)}
+            value={quantity}
             required
           />
         </div>
