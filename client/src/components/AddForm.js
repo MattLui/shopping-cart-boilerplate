@@ -1,37 +1,34 @@
 import { useState } from "react";
 
 const AddForm = ({ onSubmit }) => {
-  const [formVisible, setFormVisible] = useState(false);
-  const [name, setName] = useState("");
+  const [isFormVisible, setIsFormVisible] = useState(false);
+  const [title, setTitle] = useState("");
   const [price, setPrice] = useState(0);
   const [quantity, setQuantity] = useState(0);
 
-  const handleVisibilityButtonClick = () => {
-    setFormVisible(!formVisible);
+  const handleToggleAddForm = () => {
+    setIsFormVisible(!isFormVisible);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     const newProduct = {
-      name,
+      title,
       price,
-      quantity
+      quantity,
     };
     onSubmit(newProduct, reset);
   };
   const reset = () => {
-    setName("");
+    setTitle("");
     setPrice(0);
     setQuantity(0);
   };
 
   return (
-    <div className={formVisible ? "add-form visible" : "add-form"}>
+    <div className={isFormVisible ? "add-form visible" : "add-form"}>
       <p>
-        <button
-          className="add-product-button"
-          onClick={handleVisibilityButtonClick}
-        >
+        <button className="add-product-button" onClick={handleToggleAddForm}>
           Add A Product
         </button>
       </p>
@@ -39,11 +36,12 @@ const AddForm = ({ onSubmit }) => {
       <form onSubmit={handleSubmit} action="">
         <div className="input-group">
           <label htmlFor="product-name">Product Name:</label>
-          <input 
+          <input
             type="text"
-            onChange={(e) => setName(e.targetvalue)} 
-            id="product-name" 
-            name="product-name" required 
+            onChange={(e) => setTitle(e.target.value)}
+            id="product-name"
+            name="product-name"
+            required
           />
         </div>
         <div className="input-group">
@@ -71,7 +69,7 @@ const AddForm = ({ onSubmit }) => {
         </div>
         <div className="actions form-actions">
           <button type="submit">Add</button>
-          <button type="button" onClick={handleVisibilityButtonClick}>
+          <button type="button" onClick={handleToggleAddForm}>
             Cancel
           </button>
         </div>

@@ -2,23 +2,25 @@ import Product from "./Product";
 import EditForm from "./EditForm";
 import { useState } from "react";
 
-const EditableProduct = ({ product }) => {
-  const [editFormVisible, setEditFormVisible] = useState(false);
+const EditableProduct = ({ product, onDelete, onEdit }) => {
+  const [isEditFormVisible, setIsEditFormVisible] = useState(false);
 
-  const handleVisibilityEditButtonClick = () => {
-    setEditFormVisible(!editFormVisible);
+  const handleEditFormToggle = () => {
+    setIsEditFormVisible(!isEditFormVisible);
   };
 
   return (
     <div>
       <Product
         product={product}
-        onVisibilityEditButtonClick={handleVisibilityEditButtonClick}
+        onEditFormToggle={handleEditFormToggle}
+        onDelete={onDelete}
       />
-      {editFormVisible ? (
+      {isEditFormVisible ? (
         <EditForm
           product={product}
-          onVisibilityEditButtonClick={handleVisibilityEditButtonClick}
+          onEditFormToggle={handleEditFormToggle}
+          onEdit={onEdit}
         />
       ) : null}
     </div>

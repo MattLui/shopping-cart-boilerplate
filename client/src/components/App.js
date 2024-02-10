@@ -5,7 +5,9 @@ import { useState, useEffect } from "react";
 
 import {
   createProduct,
-  getProducts
+  getProducts,
+  deleteProduct,
+  editProduct,
 } from "../services/products";
 
 const App = () => {
@@ -27,16 +29,40 @@ const App = () => {
         callback();
       }
     } catch (e) {
-      console.error(e)
+      console.error(e);
     }
-  }
+  };
+
+  const handleDelete = async (id) => {
+    try {
+      await deleteProduct(id);
+      setProducts(products.filter((product) => product._id !== id));
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
+  const handleEdit = async (id, updatedProduct) => {
+    try {
+      const data = await editProduct(id, updatedProduct);
+      setProducts(
+        products.map((product) => (product._id === id ? data : product)),
+      );
+    } catch (e) {
+      console.error(e);
+    }
+  };
 
   return (
     <div>
       <Header />
       <main>
-        <ProductList products={products} />
-        <AddForm onSubmit={handleSubmit}/>
+        <ProductList
+          products={products}
+          onDelete={handleDelete}
+          onEdit={handleEdit}
+        />
+        <AddForm onSubmit={handleSubmit} />
       </main>
     </div>
   );

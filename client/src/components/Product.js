@@ -1,7 +1,8 @@
-import { deleteProduct } from "../services/products";
-
-const Product = ({ product, onVisibilityEditButtonClick }) => {
-  const handleVisibilityEditButtonClick = onVisibilityEditButtonClick;
+const Product = ({ product, onEditFormToggle, onDelete }) => {
+  const handleEditFormToggle = onEditFormToggle;
+  const handleDelete = (id) => {
+    onDelete(id);
+  };
 
   return (
     <li className="product">
@@ -11,11 +12,14 @@ const Product = ({ product, onVisibilityEditButtonClick }) => {
         <p className="quantity">{`${product.quantity} left in stock`}</p>
         <div className="actions product-actions">
           <button className="add-to-cart">Add to Cart</button>
-          <button className="edit" onClick={handleVisibilityEditButtonClick}>
+          <button className="edit" onClick={handleEditFormToggle}>
             Edit
           </button>
         </div>
-        <button className="delete-button">
+        <button
+          className="delete-button"
+          onClick={() => handleDelete(product._id)}
+        >
           <span>X</span>
         </button>
       </div>
