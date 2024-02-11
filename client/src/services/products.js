@@ -23,3 +23,18 @@ export const editProduct = async (id, updatedProduct) => {
   });
   return data;
 };
+
+export const getCart = async () => {
+  const { data } = await axios.get("/api/cart");
+  return data;
+};
+
+export const addToCart = async (id) => {
+  const { data } = await axios.post("/api/add-to-cart/", { productId: id });
+  return data;
+};
+
+export const checkout = async () => {
+  const { data } = await axios.post("/api/checkout");
+  return data;
+};
