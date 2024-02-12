@@ -5739,24 +5739,18 @@ const App = ()=>{
     const handleAddToCart = async (id)=>{
         try {
             const { item } = await (0, _products.addToCart)(id);
-            if (!Array.isArray(cart)) setCart((prevCart)=>[
+            const existingItemIndex = cart.findIndex((cartItem)=>cartItem._id === item._id);
+            if (existingItemIndex >= 0) setCart((prevCart)=>prevCart.map((cartItem, index)=>{
+                    if (index === existingItemIndex) return {
+                        ...cartItem,
+                        quantity: cartItem.quantity + 1
+                    };
+                    return cartItem;
+                }));
+            else setCart((prevCart)=>[
                     ...prevCart,
                     item
                 ]);
-            else {
-                const existingItemIndex = cart.findIndex((cartItem)=>cartItem._id === item._id);
-                if (existingItemIndex >= 0) setCart((prevCart)=>prevCart.map((cartItem, index)=>{
-                        if (index === existingItemIndex) return {
-                            ...cartItem,
-                            quantity: cartItem.quantity + 1
-                        };
-                        return cartItem;
-                    }));
-                else setCart((prevCart)=>[
-                        ...prevCart,
-                        item
-                    ]);
-            }
             setProducts((prevProducts)=>prevProducts.map((product)=>product._id === item.productId ? {
                         ...product,
                         quantity: product.quantity - 1
@@ -5768,7 +5762,7 @@ const App = ()=>{
     const handleCheckout = async ()=>{
         try {
             await (0, _products.checkout)();
-            setCart("");
+            setCart([]);
         } catch (e) {
             console.error(e);
         }
@@ -5780,7 +5774,7 @@ const App = ()=>{
                 onCheckout: handleCheckout
             }, void 0, false, {
                 fileName: "src/components/App.js",
-                lineNumber: 117,
+                lineNumber: 115,
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("main", {
@@ -5792,26 +5786,26 @@ const App = ()=>{
                         onAddToCart: handleAddToCart
                     }, void 0, false, {
                         fileName: "src/components/App.js",
-                        lineNumber: 119,
+                        lineNumber: 117,
                         columnNumber: 9
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _addFormDefault.default), {
                         onSubmit: handleSubmit
                     }, void 0, false, {
                         fileName: "src/components/App.js",
-                        lineNumber: 125,
+                        lineNumber: 123,
                         columnNumber: 9
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/components/App.js",
-                lineNumber: 118,
+                lineNumber: 116,
                 columnNumber: 7
             }, undefined)
         ]
     }, void 0, true, {
         fileName: "src/components/App.js",
-        lineNumber: 116,
+        lineNumber: 114,
         columnNumber: 5
     }, undefined);
 };

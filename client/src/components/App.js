@@ -68,27 +68,25 @@ const App = () => {
   const handleAddToCart = async (id) => {
     try {
       const { item } = await addToCart(id);
-      if (!Array.isArray(cart)) {
-        setCart((prevCart) => [...prevCart, item]);
-      } else {
-        const existingItemIndex = cart.findIndex(
-          (cartItem) => cartItem._id === item._id,
+
+      const existingItemIndex = cart.findIndex(
+        (cartItem) => cartItem._id === item._id,
+      );
+
+      if (existingItemIndex >= 0) {
+        setCart((prevCart) =>
+          prevCart.map((cartItem, index) => {
+            if (index === existingItemIndex) {
+              return {
+                ...cartItem,
+                quantity: cartItem.quantity + 1,
+              };
+            }
+            return cartItem;
+          }),
         );
-        if (existingItemIndex >= 0) {
-          setCart((prevCart) =>
-            prevCart.map((cartItem, index) => {
-              if (index === existingItemIndex) {
-                return {
-                  ...cartItem,
-                  quantity: cartItem.quantity + 1,
-                };
-              }
-              return cartItem;
-            }),
-          );
-        } else {
-          setCart((prevCart) => [...prevCart, item]);
-        }
+      } else {
+        setCart((prevCart) => [...prevCart, item]);
       }
 
       setProducts((prevProducts) =>
@@ -106,7 +104,7 @@ const App = () => {
   const handleCheckout = async () => {
     try {
       await checkout();
-      setCart("");
+      setCart([]);
     } catch (e) {
       console.error(e);
     }
